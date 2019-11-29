@@ -1,0 +1,25 @@
+
+<div  style="text-align:left;width:100%;">
+        <h1>
+            {{ title }}
+        </h1>
+        <table class="table table-bordered " *ngIf="arrBirds" style="margin: auto;width: 500px;">
+            <!-- ADD HEADERS -->
+            <tr>
+                <th *ngIf="num1>=1">ID</th>
+                    <th *ngIf="num1>=2">Author</th>
+                        <th *ngIf="num1>=3">Description</th>
+                          <th *ngIf="num1>=4">Title</th>
+            </tr>
+      
+            <!-- BIND ARRAY TO TABLE -->
+            <tr *ngFor="let bird of arrBirds">
+                <td *ngIf="num1>=1">{{bird.id}}</td>
+                    <td *ngIf="num1>=2">{{bird.author}}</td>
+                        <td *ngIf="num1>=3">{{bird.description}}</td>
+                          <td *ngIf="num1>=4">{{bird.title}}</td>
+            </tr>
+        </table>
+      </div>
+      
+      

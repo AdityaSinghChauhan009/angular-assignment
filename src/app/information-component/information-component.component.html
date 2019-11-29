@@ -1,0 +1,81 @@
+<div class="sidenav">
+    <button class="btn btn-block btn-lg text-light" [routerLink]="['/screen', 1]" (click)="firstscreen()">Screen 1</button>
+    <button class="btn btn-block btn-lg text-light" [routerLink]="['/screen', 2]" (click)="secondscreen()">Screen 2</button>
+    <button class="btn btn-block btn-lg text-light" [routerLink]="['/screen', 3]"(click)="thirdscreen()" >Screen 3</button>
+    <button class="btn btn-block btn-lg text-light" [routerLink]="['/screen', 4]" (click)="dynamicscreen()" >Dynamic Screen</button>
+    <button class="btn btn-block btn-lg text-light" [routerLink]="['/home']" >Home</button>
+    
+  </div>
+  
+
+  <div class="main">
+        <div class="jumbotron">
+                <h1>
+                        Information Component
+                </h1>
+                </div>
+
+<div *ngIf="value==4" style="text-align:left">
+    
+    <form >
+        <div class="form-group">
+                <label  >Enter the number of filters :   </label><input class="form-control" [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="filternum" required>
+        </div> 
+        <div class="form-group">
+            <label  >Enter the number of columns in the table :   </label><input class="form-control" [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="num1" required>
+        </div>    
+        <div class="form-group">
+            <label >Enter the number of action buttons : </label><input class="form-control" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="num2" required>
+        </div>
+        <div class="form-group">   
+            <button class="btn btn-primary"  (click)="loadMyChildComponent();">Submit</button><br>
+        </div> 
+    </form>
+  
+    <app-filter-component *ngIf="loadComponent" [num]="filternum" [colour]="blackColour"></app-filter-component>
+        <app-tabular-component *ngIf="loadComponent" [num1]="num1" ></app-tabular-component><br>
+         <app-action-component [colour]="blackColour" *ngIf="loadComponent" [num]="num2"></app-action-component><br>
+         <!-- <app-tabular-component *ngIf="loadComponent" [num]="num"></app-tabular-component> -->
+         
+      
+     
+    </div>
+
+    <div *ngIf="value==1 " style="text-align:left">
+    
+       
+        <app-filter-component [num]=3 [colour]="greenColour"></app-filter-component>
+            <app-tabular-component  [num1]=3 ></app-tabular-component><br>
+             <app-action-component [colour]="greenColour" [num]=2></app-action-component><br>
+             
+             <!-- <app-tabular-component *ngIf="loadComponent" [num]="num"></app-tabular-component> -->
+             
+          
+         
+        </div>
+
+        <div *ngIf="value==2" style="text-align:left">
+    
+            <app-filter-component [num]=2 [colour]="yellowColour"></app-filter-component>
+            <app-tabular-component  [num1]=4 ></app-tabular-component><br>
+             <app-action-component [colour]="yellowColour" [num]=2></app-action-component><br>
+             <!-- <app-tabular-component *ngIf="loadComponent" [num]="num"></app-tabular-component> -->
+             
+          
+         
+        </div>
+
+        <div *ngIf="value==3" style="text-align:left">
+    
+            <app-filter-component [num]=1 [colour]="redColour"></app-filter-component>
+            <app-tabular-component  [num1]=3 ></app-tabular-component><br>
+             <app-action-component [colour]="redColour" [num]=1></app-action-component><br>
+             <!-- <app-tabular-component *ngIf="loadComponent" [num]="num"></app-tabular-component> -->
+             
+          
+         
+        </div>
+
+
+  </div>
+  
