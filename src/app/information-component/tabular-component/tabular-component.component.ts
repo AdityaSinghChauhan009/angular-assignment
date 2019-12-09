@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TabularComponentService } from './tabular-component.service';
+import { Book } from './books';
 
 @Component({
   selector: 'app-tabular-component',
@@ -9,20 +11,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class TabularComponentComponent implements OnInit {
 
-  url = 'http://localhost:3000';
-  constructor(private httpService: HttpClient) { }
-  arrBirds: string [];
+  
+  constructor(private tabularComponentService: TabularComponentService) { }
+  books: Book[];
+  errorMessage: string;
   ngOnInit() {
-    this.httpService.get(this.url+'/pictures').subscribe(
-      data => {
-        this.arrBirds = data as string [];	 // FILL THE ARRAY WITH DATA.
-          console.log(this.arrBirds[1]);
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      }
-      );
+    this.tabularComponentService.getBooks().subscribe(
+      books => this.books = books,
+      error => this.errorMessage = <any>error);
   }
+ 
 
   @Input()
   num1 : number;
